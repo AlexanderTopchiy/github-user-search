@@ -1,7 +1,8 @@
-package com.wyverx.githubusersearch
+package com.wyverx.githubusersearch.view
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import com.wyverx.githubusersearch.R
 
 class MainActivity : AppCompatActivity() {
 
