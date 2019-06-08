@@ -35,6 +35,6 @@ dependencies {
     implementation "io.reactivex.rxjava2:rxjava:$rxjava_version"
     implementation "com.google.dagger:dagger-android:$dagger_version"
     implementation "com.google.dagger:dagger-android-support:$dagger_version"
-    annotationProcessor "android.arch.persistence.room:compiler:$dagger_version"
+    annotationProcessor "android.arch.persistence.room:compiler:$room_version"
     annotationProcessor "com.google.dagger:dagger-android-processor:$dagger_version"
 }
