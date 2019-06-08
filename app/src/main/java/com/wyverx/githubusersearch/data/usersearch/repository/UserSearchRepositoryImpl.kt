@@ -23,7 +23,7 @@ class UserSearchRepositoryImpl : UserSearchRepository {
 
     override fun getUsers(): MutableList<User> {
         for (userData in userDataList) {
-            userList.add(mapData.mapFromUserDatatoUser(userData))
+            userList.add(mapData.mapFromUserDataToUser(userData))
         }
         return userList
     }

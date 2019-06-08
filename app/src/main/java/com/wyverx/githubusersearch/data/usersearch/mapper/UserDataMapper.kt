@@ -8,7 +8,7 @@ import com.wyverx.githubusersearch.domain.usersearch.model.User
  */
 class UserDataMapper {
 
-    fun mapFromUserDatatoUser(from: UserData) : User {
+    fun mapFromUserDataToUser(from: UserData) : User {
         return User(
             from.login,
             from.avatarUrl,
