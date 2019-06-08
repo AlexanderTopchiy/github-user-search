@@ -5,6 +5,7 @@ import com.wyverx.githubusersearch.data.usersearch.mapper.UserDataMapper
 import com.wyverx.githubusersearch.data.usersearch.source.UserSearchRemoteDataSource
 import com.wyverx.githubusersearch.domain.usersearch.model.User
 import com.wyverx.githubusersearch.domain.usersearch.repository.UserSearchRepository
+import com.wyverx.githubusersearch.remote.usersearch.UserSearchRemoteDataSourceImpl
 
 /**
  * This class implements interface from domain layer.
@@ -16,15 +17,17 @@ class UserSearchRepositoryImpl : UserSearchRepository {
     private val mapData: UserDataMapper = UserDataMapper()
 
 
-    fun getUserData(dataFromRemote: UserSearchRemoteDataSource) {
-        userDataList.addAll(dataFromRemote.getUserDataFromRemote())
-    }
+    override fun getUsers(userName: String): MutableList<User> {
+        getUserData(userName, UserSearchRemoteDataSourceImpl())
 
-
-    override fun getUsers(): MutableList<User> {
         for (userData in userDataList) {
             userList.add(mapData.mapFromUserDataToUser(userData))
         }
         return userList
+    }
+
+
+    private fun getUserData(userName: String, dataFromRemote: UserSearchRemoteDataSource) {
+        userDataList.addAll(dataFromRemote.getUserDataFromRemote(userName))
     }
 }

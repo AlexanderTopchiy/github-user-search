@@ -7,5 +7,5 @@ import com.wyverx.githubusersearch.domain.usersearch.model.User
  */
 interface UserSearchRepository {
 
-    fun getUsers(): MutableList<User>
+    fun getUsers(userName: String): MutableList<User>
 }
