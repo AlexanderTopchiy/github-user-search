@@ -33,6 +33,7 @@ class UserSearchRemoteDataSourceImpl : UserSearchRemoteDataSource {
         for (user in listFromRemote) {
             listForData.add(mapRemoteData.mapDataFromUserResponseToUserData(user))
         }
+        disposable?.clear()
         return listForData
     }
 
