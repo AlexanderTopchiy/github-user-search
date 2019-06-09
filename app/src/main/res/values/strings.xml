@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">GitHubUserSearch</string>
+    <string name="search_title">Press to search</string>
+    <string name="search_hint">Please, type user GitHub login here&#8230;</string>
 </resources>

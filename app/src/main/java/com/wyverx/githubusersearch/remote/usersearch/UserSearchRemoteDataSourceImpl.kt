@@ -22,10 +22,17 @@ class UserSearchRemoteDataSourceImpl : UserSearchRemoteDataSource {
     private val mapRemoteData: UserResponseMapper = UserResponseMapper()
 
 
-    override fun getUserDataFromRemote(userName: String): MutableList<UserData> {
+    companion object {
+        fun newInstance() : UserSearchRemoteDataSourceImpl {
+            return UserSearchRemoteDataSourceImpl()
+        }
+    }
+
+
+    override fun getUserDataFromRemote(userLogin: String): MutableList<UserData> {
         disposable?.add(NetworkService
             .getGitHubApi()
-            .getUserFromApi(userName)
+            .getUserFromApi(userLogin)
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeOn(Schedulers.io())
             .subscribe(this::setDataToList)

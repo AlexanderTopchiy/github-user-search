@@ -17,8 +17,15 @@ class UserSearchRepositoryImpl : UserSearchRepository {
     private val mapData: UserDataMapper = UserDataMapper()
 
 
-    override fun getUsers(userName: String): MutableList<User> {
-        getUserData(userName, UserSearchRemoteDataSourceImpl())
+    companion object {
+        fun newInstance(): UserSearchRepositoryImpl {
+            return UserSearchRepositoryImpl()
+        }
+    }
+
+
+    override fun getUsers(userLogin: String): MutableList<User> {
+        getUserData(userLogin, UserSearchRemoteDataSourceImpl.newInstance())
 
         for (userData in userDataList) {
             userList.add(mapData.mapFromUserDataToUser(userData))
@@ -27,7 +34,7 @@ class UserSearchRepositoryImpl : UserSearchRepository {
     }
 
 
-    private fun getUserData(userName: String, dataFromRemote: UserSearchRemoteDataSource) {
-        userDataList.addAll(dataFromRemote.getUserDataFromRemote(userName))
+    private fun getUserData(userLogin: String, dataFromRemote: UserSearchRemoteDataSource) {
+        userDataList.addAll(dataFromRemote.getUserDataFromRemote(userLogin))
     }
 }

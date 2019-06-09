@@ -3,6 +3,7 @@ package com.wyverx.githubusersearch.presentation.usersearch
 import android.widget.SearchView
 import com.wyverx.githubusersearch.domain.usersearch.interactor.UserSearchInteractor
 import com.wyverx.githubusersearch.domain.usersearch.model.User
+import com.wyverx.githubusersearch.view.usersearch.ui.UserSearchFragment
 import io.reactivex.Observable
 import io.reactivex.ObservableOnSubscribe
 import io.reactivex.disposables.CompositeDisposable
@@ -16,6 +17,14 @@ class UserSearchPresenter (
     private val userSearchView: UserSearchView) {
 
     private val disposable: CompositeDisposable? = null
+
+
+    companion object {
+        fun newInstance(userSearchInteractor: UserSearchInteractor,
+                        userSearchView: UserSearchView): UserSearchPresenter {
+            return UserSearchPresenter(userSearchInteractor, userSearchView)
+        }
+    }
 
 
     fun loadData(searchView: SearchView) {

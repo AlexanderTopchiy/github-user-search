@@ -7,5 +7,5 @@ import com.wyverx.githubusersearch.data.usersearch.model.UserData
  */
 interface UserSearchRemoteDataSource {
 
-    fun getUserDataFromRemote(userName: String) : MutableList<UserData>
+    fun getUserDataFromRemote(userLogin: String) : MutableList<UserData>
 }
