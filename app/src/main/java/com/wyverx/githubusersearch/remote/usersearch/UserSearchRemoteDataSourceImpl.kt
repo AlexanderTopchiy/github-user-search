@@ -30,6 +30,7 @@ class UserSearchRemoteDataSourceImpl : UserSearchRemoteDataSource {
             .subscribeOn(Schedulers.io())
             .subscribe(this::setDataToList)
         )
+        disposable?.dispose()
         for (user in listFromRemote) {
             listForData.add(mapRemoteData.mapDataFromUserResponseToUserData(user))
         }
