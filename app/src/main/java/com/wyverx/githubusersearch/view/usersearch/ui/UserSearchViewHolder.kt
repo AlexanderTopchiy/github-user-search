@@ -8,6 +8,9 @@ import com.squareup.picasso.Picasso
 import com.wyverx.githubusersearch.R
 import com.wyverx.githubusersearch.domain.usersearch.model.User
 
+/**
+ * This is ViewHolder for search results adapter.
+ */
 class UserSearchViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView) {
 
     private val loginView: TextView? = itemView?.findViewById(R.id.user_login) as? TextView

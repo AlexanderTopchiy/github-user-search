@@ -16,8 +16,6 @@ class UserSearchPresenter (
     private val userSearchInteractor: UserSearchInteractor,
     private val userSearchView: UserSearchView) {
 
-    private val disposable: CompositeDisposable? = null
-
 
     companion object {
         fun newInstance(userSearchInteractor: UserSearchInteractor,
@@ -27,33 +25,7 @@ class UserSearchPresenter (
     }
 
 
-    fun loadData(searchView: SearchView) {
-        disposable?.add(
-            Observable.create(ObservableOnSubscribe<String> { subscriber ->
-                searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-                    override fun onQueryTextChange(newText: String?): Boolean {
-                        subscriber.onNext(newText!!)
-                        return false
-                    }
-
-                    override fun onQueryTextSubmit(query: String?): Boolean {
-                        subscriber.onNext(query!!)
-                        return false
-                    }
-                })
-            })
-                .map { text -> text.toLowerCase().trim() }
-                .debounce(250, TimeUnit.MILLISECONDS)
-                .distinct()
-                .filter { text -> text.isNotBlank() }
-                .subscribe { text -> loadCallback(text)}
-        )
-        disposable?.dispose()
-        disposable?.clear()
-    }
-
-
-    private fun loadCallback(text: String) {
+    fun loadCallback(text: String) {
         val userList: MutableList<User> = userSearchInteractor.fetchUsers(text)
         userSearchView.showResult(userList)
     }

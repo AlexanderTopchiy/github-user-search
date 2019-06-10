@@ -7,6 +7,9 @@ import android.view.ViewGroup
 import com.wyverx.githubusersearch.R
 import com.wyverx.githubusersearch.domain.usersearch.model.User
 
+/**
+ * This is adapter for search results.
+ */
 class UserSearchRecyclerViewAdapter : RecyclerView.Adapter<UserSearchViewHolder>() {
 
     private val userList: MutableList<User> = ArrayList()
